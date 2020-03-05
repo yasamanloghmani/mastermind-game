@@ -5,16 +5,7 @@ const ALL_COLORS = {
 }
 
 let COLORS = [];
-// let COLORS = {
-//     '0' : '#ff6500',
-//      '1' : '#ff0073',
-//      '2': '#00ff00',
-//      '3' : '#8c00ff',
-//      '4' :  '#ffff00',
-//      '5' : '#0080ff'
-// };
-
-const difficultyLevel = [
+const difficultyLeveltimes = [
     {
         min : '6',
     },
@@ -25,13 +16,12 @@ const difficultyLevel = [
         min : '2',
     }
 ];
+
 let difficulty = -1;
 let randomColors = [];
-let board, activeRow, colorId,clmn ;
-let perfect = 0, almost = 0;
-let timerId = 0;
+let board, activeRow, colorId, clmn, randomColorsColumn ;
+let perfect = 0, almost = 0, timerId = 0;
 let userName = "";
-let randomColorsColumn;
 
 let firstPage = document.getElementById('first-modal-page');
 let secondPage = document.getElementById('second-modal-page');
@@ -39,7 +29,6 @@ let secondPage = document.getElementById('second-modal-page');
 document.querySelectorAll('button.difficulty-level').forEach(function(el){
     el.addEventListener('click', checkDefficulty);
 });
-
 function checkDefficulty(evt){
     let difficualtyBtn = evt.target;
     let difficultyId = difficualtyBtn.id;
@@ -64,18 +53,17 @@ function nextModalPage(){
 
 document.getElementById('start-btn').addEventListener('click', startGame);
 function startGame(){
-        let getName = document.getElementById('name');
-        userName =  getName.value;;
-        userName = String(userName);
-        if (userName != null && userName != "" ) {
-            document.getElementById("name-of-user").innerHTML = `${userName}`;
-        }
-        else {
-            let enterName = document.getElementById('enter-name');
-            enterName.style.color = 'red';
-            return;
-        }
-
+    let getName = document.getElementById('name');
+    userName =  getName.value;
+    userName = String(userName);
+    if (userName != null && userName != "" ) {
+        document.getElementById("name-of-user").innerHTML = `${userName}`;
+    }
+    else {
+        let enterName = document.getElementById('enter-name');
+        enterName.style.color = 'red';
+        return;
+    }
     if(difficulty != -1){
         let modalPAge = document.getElementById('myModal');
         modalPAge.style.display = "none";
@@ -84,26 +72,24 @@ function startGame(){
     else {
         let selectDifficualty = document.getElementById('select-difficualty');
         selectDifficualty.style.color = 'red';
-
     }
 }
 
 function countDownTimer() {
-    var minutes = difficultyLevel[difficulty].min;
-    //console.log(minutes)
+    var minutes = difficultyLeveltimes[difficulty].min;
     var sec = 59;
     timerId = setInterval(function() {
-      document.getElementById("timer").innerHTML = minutes + " : " + sec;
-      sec--;
-      if (sec == 00 && minutes != 0) {
-        minutes--;
-        sec = 59;
-      }
-      if (minutes === 0 && sec == -1 ) {
-        gameOver();
-    }
+        document.getElementById("timer").innerHTML = minutes + " : " + sec;
+        sec--;
+        if (sec == 00 && minutes != 0) {
+            minutes--;
+            sec = 59;
+        }
+        if (minutes === 0 && sec == -1 ) {
+            gameOver();
+        }
     }, 1000);
-  }
+}
 
 function gameOver(){
     clearInterval(timerId);
@@ -139,7 +125,6 @@ function pickColor(eve){
     colorId = parseInt(pickedColor.id.replace('color', ''))
 }
 
-
 function handleColumnClicked(evt) {
     const idChecker = evt.target.id.includes("re");
     if(!idChecker){
@@ -163,13 +148,7 @@ function checkGuesses(){
         acc[num] = acc[num] ? acc[num] + 1 : 1
         return acc
     }, {});
-
     let copyOfArrey = board[activeRow];
-    // let checkNullCount = copyOfArrey.reduce((acc, num) => {
-    //     acc[num] = acc[num] ? acc[num] + 1 : 1
-    //     return acc
-    // }, {});
-
     if(!copyOfArrey.includes(null)) {
         copyOfArrey.forEach(function(el, idx) {
             if(randomColors.includes(el)) {
@@ -177,7 +156,7 @@ function checkGuesses(){
                     perfect++;
                     checkCount[el]--;
                     copyOfArrey[idx] = -1;
-                 }
+                }
             }    
         });
         copyOfArrey.forEach(function(el, idx) {
@@ -192,11 +171,10 @@ function checkGuesses(){
         showResualt();
         winGame();
         resetResualt();
-   }
+    }
 }
 
 function showResualt() {
-    //const resualt = document.getElementById(`r${activeRow}resualt`);
     for(let i = 0; i < perfect; i++){
         const perfectDot = document.getElementById(`r${activeRow}re${i}`);
         perfectDot.style.backgroundColor = 'red';
@@ -215,25 +193,21 @@ function resetResualt() {
 }
 
 function winGame(){
-
     if(perfect === 4 ){
         clearInterval(timerId);
         for(clmn = 0 ; clmn <4; clmn++){
             randomColorsColumn = document.getElementById(`col${clmn}`);
-            // was COLORS[randomColors[clmn]]
             randomColorsColumn.style.backgroundColor = COLORS[randomColors[clmn]];   
         }
         let win = document.getElementById('win-status');
         win.innerHTML = `WINNER :)`;
         var yourGuess = document.createElement("h3");
         document.getElementById('win-status').appendChild(yourGuess);
-
         let guessNumber = activeRow+1;
         yourGuess.innerHTML = `You won the game in your ${guessNumber} guess`;
-        
         return;
     }
-    else{
+    else {
         activeRow++;
         if(activeRow < 10){
             for(let x = 0; x<4; x++){
