@@ -318,10 +318,7 @@ button{
 }
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-    #myModal{
-        display: none; 
-    }
-    
+
     body {
         display: block;
         overflow-x: hidden;
@@ -348,7 +345,7 @@ button{
     }
 
     p {
-        font-size: 30px;
+        font-size: 25px;
         line-height: 40px;
         margin-top: 10px;
     }
@@ -358,6 +355,7 @@ button{
     }
     #setbg{
         overflow: hidden;
+        background-image: url(../images/51410870488fe9603ab65730c79075b9.jpg);
         
     }
     #board {
@@ -369,34 +367,78 @@ button{
         height: 230px;
         margin:30px auto;
         box-shadow: 2px 3px 4px  darkslategrey;
+        background-image: url(../images/51410870488fe9603ab65730c79075b9.jpg);
 
     }
     #main-header{
         display: none;
     }
-    .modal {
-
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%; 
-        overflow: hidden;
-        background-color: rgba(0,0,0,0.4); 
-    }
-    .modal-content {
-        background-color: #fefefe;
-        margin:auto;
-        padding: 20px;
-        width: 280px;
+    #myModal{
+        margin-bottom: 200px;
     }
 
     button{
         width: 80px;
-        margin-bottom: 20px;
+        margin-bottom: 60px;
+    }
+    #start-btn, #next-btn, #name-btn, #difficulty0, #difficulty1, #difficulty2{
+        height: 50px;
+        width: 90px;
+        font-size: 20px;
     }
 }
 
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px)  {
-        /* Styles */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px)  {   
+    body{
+        display: block;
+        overflow: visible;
+    }
+    #information{
+        position: fixed;
+        bottom: 0;
+        left: 20%;
+        right: 20%;
+        width: 60%;
+        box-shadow: none;
+        border: none;
+        background-image: none;
+    }
+    #information>h2{
+        margin-top: 60px;
+        font-size: 25px;
+        float: left;
+    }
+    #information>div{
+        margin-top: 60px;
+        float: right;
+    }
+    #information>div>h3{
+        margin: 0px;
+
+    }
+    #information>section{
+        font-size: 30px;
+        margin: 0px;
+        padding: 0px;
+        clear: both;
+    }
+    #information>section>h3{
+        font-size: 15px;
+        margin: 0px;
+        padding: 0px;
+    }
+    #setbg{
+        position: fixed;
+        z-index: 1;
+        top: 10px;
+        left: 10%;
+        right: 10%;
+        margin-top: 10px;
+        box-shadow: -10px 0px 13px -7px darkslategrey, 10px 0px 13px -7px darkslategrey, 5px 5px 15px 5px rgba(0,0,0,0);
+        border-radius: 20px;
+        margin-bottom: 20px;
+    }
+    #check-btn, #reset-btn {
+        margin-bottom: 10px;
+    }
 }
