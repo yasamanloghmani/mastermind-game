@@ -316,3 +316,87 @@ button{
     outline: none;
     border-radius: 50%;
 }
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    #myModal{
+        display: none; 
+    }
+    
+    body {
+        display: block;
+        overflow-x: hidden;
+    }
+    h1 {
+        font-size: 25px;
+        text-shadow: none;
+        
+    }
+     
+    h2 {
+        font-size: 30px;
+        margin: 10px auto;
+        text-shadow: none;
+    }
+     
+    h3 {
+        font-size: 20px;
+        margin-top: 10px;
+    }
+     
+    h3 > span {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 30px;
+        line-height: 40px;
+        margin-top: 10px;
+    }
+
+    .modal-content {
+        box-shadow: -10px 0px 13px -7px darkslategrey, 10px 0px 13px -7px darkslategrey;
+    }
+    #setbg{
+        overflow: hidden;
+        
+    }
+    #board {
+        width: 220px;
+        margin: 30px auto;
+    }
+    #information {
+        width: 280px;
+        height: 230px;
+        margin:30px auto;
+        box-shadow: 2px 3px 4px  darkslategrey;
+
+    }
+    #main-header{
+        display: none;
+    }
+    .modal {
+
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%; 
+        overflow: hidden;
+        background-color: rgba(0,0,0,0.4); 
+    }
+    .modal-content {
+        background-color: #fefefe;
+        margin:auto;
+        padding: 20px;
+        width: 280px;
+    }
+
+    button{
+        width: 80px;
+        margin-bottom: 20px;
+    }
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px)  {
+        /* Styles */
+}
