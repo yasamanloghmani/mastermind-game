@@ -1,7 +1,3 @@
-/* font-family: 'Indie Flower', ;
-font-family: 'Gloria Hallelujah', ; */
-/* background-color: rgb(0,0,0); Fallback color  in .modal*/
-
 *, *::after, *::before {
     box-sizing: border-box;
   }
@@ -12,8 +8,6 @@ body {
     display: grid;
     grid-template-columns: 30% 70%;
     justify-content: center;
-    /* background-image: url(../images/index.jpg); */
-    /* background-size: cover; */
 }
 
 h1 {
@@ -24,6 +18,7 @@ h1 {
     text-shadow: 4px 2px #e1e8f2;
     margin-bottom: 0px;
 }
+
 h2 {
     font-size: 40px;
     font-weight: bold;
@@ -38,12 +33,13 @@ h3 {
     color: rgb(50, 94, 94);
     margin-top: 30px;
 }
+
 h3 > span {
     font-size: 30px;
     color: rgb(194, 15, 75);
 }
 
-p{
+p {
     font-family: 'Handlee', cursive;
     font-size: 30px;
     line-height: 60px;
@@ -51,19 +47,19 @@ p{
     margin-top: 20px;
 }
 
-#redpegs{
+#redpegs {
     color: red;
     font-weight: bold;
     text-shadow: 1px 2px rgb(190, 148, 148);
 }
 
-#blackpegs{
+#blackpegs {
     color: black;
     font-weight: bold;
     text-shadow: 1px 2px rgb(152, 149, 149);
 }
 
-#player-guesses > div , #computer-choices > div {
+#player-guesses > div, #computer-choices > div {
     width: 30px;
     height: 30px;
     border: 1px solid black;
@@ -87,7 +83,7 @@ p{
     margin: auto;
 }
 
-#player-guesses , #computer-choices {
+#player-guesses, #computer-choices {
     display: grid;
     grid-template-columns:20% 20% 20% 20% 20%;
 }
@@ -97,6 +93,7 @@ p{
     border-radius: 5px;
     margin-top: 8px;
 }
+
 #setbg{
     background-image: url(../images/3604370d83e30d9e3a5e3324943ed4e5.jpg);
     background-repeat: no-repeat;
@@ -146,6 +143,7 @@ p{
     align-self: center;
     box-shadow: 1px 1px 1px 1px #ccc;
 }
+
 #colors > div:hover {
     border: 2px solid darkslategrey;
 }
@@ -208,13 +206,13 @@ button{
     box-shadow: 1px 1px 1px 1px #D89EB1;
 }
 
-#reset-btn:hover{
+#reset-btn:hover {
     background-color: #9E0C3C ;
     color: #F5E7EC ;
     box-shadow: 1px 2px 2px 2px #D89EB1;
 }
 
-#win-status{
+#win-status {
     color: rgb(194, 15, 75);
     font-size: 60px;
     text-align: center;
@@ -227,21 +225,24 @@ button{
     height: 380px;
     margin: auto;
     background-image:url(../images/3604370d83e30d9e3a5e3324943ed4e5.jpg) ;
-    /* -webkit-box-shadow: -10px 0px 13px -7px darkslategrey, 10px 0px 13px -7px darkslategrey, 5px 5px 15px 5px rgba(0,0,0,0);  */
     box-shadow: -10px 0px 13px -7px darkslategrey, 10px 0px 13px -7px darkslategrey, 5px 5px 15px 5px rgba(0,0,0,0);
     padding: 5px;
     border-radius: 20px;
 }
-#player-guesses > div{
+
+#information>section {
+    margin-top: 0;
+}
+
+#player-guesses > div {
     background-color: white;
 }
 
-#myModal{
+#myModal {
     display: block; 
 }
 
 .modal {
-
     position: fixed;
     z-index: 1;
     left: 0;
@@ -254,15 +255,15 @@ button{
   
 .modal-content {
     background-color: #fefefe;
-    margin:5% auto; /* 15% from the top and centered */
+    margin:5% auto;
     padding: 20px;
     border-radius: 25px;
     border: 2px solid darkslategrey;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 80%; 
     box-shadow: -20px 0px 13px -7px darkslategrey, 20px 0px 13px -7px darkslategrey, 5px 5px 15px 5px rgba(0,0,0,0);
 }
 
-#next-btn, #name-btn, #name, #difficulty0, #difficulty1, #difficulty2{
+#next-btn, #name-btn, #name, #difficulty0, #difficulty1, #difficulty2 {
     cursor: pointer;
     margin-top: 30px;
     margin-bottom: 10px;;
@@ -285,22 +286,22 @@ button{
 }
 
 
-#first-modal-page{
+#first-modal-page {
     display: block;
 }
 
-#second-modal-page{
+#second-modal-page {
     display:none;
 }
 
-#name{
+#name {
     border-radius: 5px;
     width: 250px;
     padding: 15px;
     cursor: text;
 }
 
-#start-btn{
+#start-btn {
     cursor: pointer;
     margin-top: 30px;
     margin-bottom: 10px;;
@@ -318,15 +319,14 @@ button{
 }
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-
     body {
         display: block;
         overflow-x: hidden;
     }
+
     h1 {
         font-size: 25px;
         text-shadow: none;
-        
     }
      
     h2 {
@@ -353,15 +353,17 @@ button{
     .modal-content {
         box-shadow: -10px 0px 13px -7px darkslategrey, 10px 0px 13px -7px darkslategrey;
     }
-    #setbg{
+    #setbg {
         overflow: hidden;
         background-image: url(../images/51410870488fe9603ab65730c79075b9.jpg);
         
     }
+
     #board {
         width: 220px;
         margin: 30px auto;
     }
+
     #information {
         width: 280px;
         height: 230px;
@@ -370,30 +372,34 @@ button{
         background-image: url(../images/51410870488fe9603ab65730c79075b9.jpg);
 
     }
-    #main-header{
+
+    #main-header {
         display: none;
     }
-    #myModal{
+
+    #myModal {
         margin-bottom: 200px;
     }
 
-    button{
+    button {
         width: 80px;
         margin-bottom: 60px;
     }
-    #start-btn, #next-btn, #name-btn, #difficulty0, #difficulty1, #difficulty2{
+
+    #start-btn, #next-btn, #name-btn, #difficulty0, #difficulty1, #difficulty2 {
         height: 50px;
         width: 90px;
         font-size: 20px;
     }
 }
 
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px)  {   
-    body{
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px){   
+    body {
         display: block;
         overflow: visible;
     }
-    #information{
+
+    #information {
         position: fixed;
         bottom: 0;
         left: 20%;
@@ -403,31 +409,37 @@ button{
         border: none;
         background-image: none;
     }
-    #information>h2{
+
+    #information>h2 {
         margin-top: 60px;
         font-size: 25px;
         float: left;
     }
-    #information>div{
+
+    #information>div {
         margin-top: 60px;
         float: right;
     }
-    #information>div>h3{
+
+    #information>div>h3 {
         margin: 0px;
 
     }
-    #information>section{
+
+    #information>section {
         font-size: 30px;
         margin: 0px;
         padding: 0px;
         clear: both;
     }
-    #information>section>h3{
+
+    #information>section>h3 {
         font-size: 15px;
         margin: 0px;
         padding: 0px;
     }
-    #setbg{
+
+    #setbg {
         position: fixed;
         z-index: 1;
         top: 10px;
@@ -438,6 +450,7 @@ button{
         border-radius: 20px;
         margin-bottom: 20px;
     }
+    
     #check-btn, #reset-btn {
         margin-bottom: 10px;
     }

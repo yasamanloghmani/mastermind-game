@@ -1,10 +1,9 @@
+// constants
 const ALL_COLORS = {
     '0' : ['#ff6500', '#ff0073', '#00ff00', '#8c00ff'],
     '1' : ['#ff6500', '#ff0073', '#00ff00', '#8c00ff', '#0080ff', '#ffff00'],
     '2' : ['#ff6500', '#ff0073', '#00ff00', '#8c00ff', '#0080ff', '#ffff00', '#00ffff', '#ffa7a7']
 }
-
-let COLORS = [];
 const difficultyLeveltimes = [
     {
         min : '6',
@@ -17,18 +16,23 @@ const difficultyLeveltimes = [
     }
 ];
 
+//app's state (variables)
+let COLORS = [];
 let difficulty = -1;
 let randomColors = [];
 let board, activeRow, colorId, clmn, randomColorsColumn ;
 let perfect = 0, almost = 0, timerId = 0;
 let userName = "";
 
+//event listener
 let firstPage = document.getElementById('first-modal-page');
 let secondPage = document.getElementById('second-modal-page');
 
 document.querySelectorAll('button.difficulty-level').forEach(function(el){
     el.addEventListener('click', checkDefficulty);
 });
+
+//check difficulty level
 function checkDefficulty(evt){
     let difficualtyBtn = evt.target;
     let difficultyId = difficualtyBtn.id;
@@ -37,6 +41,7 @@ function checkDefficulty(evt){
     COLORS =  ALL_COLORS[difficulty];
     difficualtyBtn.style.backgroundColor = 'darkslategrey';
     difficualtyBtn.style.color = 'white';
+    //call function to start the game
     generateRandomColores();
     generateColorsPeg();
     init();
@@ -45,17 +50,20 @@ function checkDefficulty(evt){
     });
 }
 
+//next page
 document.getElementById("next-btn").addEventListener('click', nextModalPage);
 function nextModalPage(){
     firstPage.style.display = "none";
     secondPage.style.display = "block";
 }
 
+//start button function
 document.getElementById('start-btn').addEventListener('click', startGame);
 function startGame(){
     let getName = document.getElementById('name');
     userName =  getName.value;
     userName = String(userName);
+    //check to make sure that name was entered
     if (userName != null && userName != "" ) {
         document.getElementById("name-of-user").innerHTML = `${userName}`;
     }
@@ -64,6 +72,7 @@ function startGame(){
         enterName.style.color = 'red';
         return;
     }
+    //check to make sure that difficulty chose
     if(difficulty != -1){
         let modalPAge = document.getElementById('myModal');
         modalPAge.style.display = "none";
@@ -75,6 +84,7 @@ function startGame(){
     }
 }
 
+//count down timer function
 function countDownTimer() {
     var minutes = difficultyLeveltimes[difficulty].min;
     var sec = 59;
@@ -91,6 +101,7 @@ function countDownTimer() {
     }, 1000);
 }
 
+//game over function
 function gameOver(){
     clearInterval(timerId);
     for(clmn = 0 ; clmn <4; clmn++){
@@ -102,7 +113,7 @@ function gameOver(){
     document.getElementById('player-guesses').removeEventListener('click', handleColumnClicked);
 
 }
-
+//generate 4 colors randomly
 function generateRandomColores () {
     for (let i=0; i < 4  ; i++){
         randomColors[i] = Math.floor(Math.random() * COLORS.length) ;
@@ -111,6 +122,7 @@ function generateRandomColores () {
     return randomColors;
 }
 
+//generate color pegs depend on difficulty level
 function generateColorsPeg (){
     for(let a = 0; a < COLORS.length; a++ ){
         let colorDiv = document.createElement("div");
@@ -119,12 +131,14 @@ function generateColorsPeg (){
     }
 }
 
+//picking color
 document.getElementById('colors').addEventListener('click', pickColor);
 function pickColor(eve){
     const pickedColor = eve.target;
     colorId = parseInt(pickedColor.id.replace('color', ''))
 }
 
+//check to click in a right column
 function handleColumnClicked(evt) {
     const idChecker = evt.target.id.includes("re");
     if(!idChecker){
@@ -142,6 +156,7 @@ function handleColumnClicked(evt) {
     } 
 }
 
+//compare guess with random colors
 document.getElementById('check-btn').addEventListener('click', checkGuesses);
 function checkGuesses(){
     let checkCount = randomColors.reduce((acc, num) => {
@@ -149,9 +164,11 @@ function checkGuesses(){
         return acc
     }, {});
     let copyOfArrey = board[activeRow];
+    //check that all columns are colored
     if(!copyOfArrey.includes(null)) {
         copyOfArrey.forEach(function(el, idx) {
             if(randomColors.includes(el)) {
+                //check the perfect 
                 if ( el === randomColors[idx] ) {
                     perfect++;
                     checkCount[el]--;
@@ -161,6 +178,7 @@ function checkGuesses(){
         });
         copyOfArrey.forEach(function(el, idx) {
             if(randomColors.includes(el)) {
+                //check the almost
                 if ( checkCount[el] > 0) {
                     almost++;
                     checkCount[el]--;
@@ -174,6 +192,7 @@ function checkGuesses(){
     }
 }
 
+//show red or black pegs as a resualt
 function showResualt() {
     for(let i = 0; i < perfect; i++){
         const perfectDot = document.getElementById(`r${activeRow}re${i}`);
@@ -192,6 +211,7 @@ function resetResualt() {
     perfect = 0;
 }
 
+//win function
 function winGame(){
     if(perfect === 4 ){
         clearInterval(timerId);
@@ -223,6 +243,8 @@ function winGame(){
         }   
     }
 }
+
+//reset function
 document.getElementById('reset-btn').addEventListener('click', resetGame);
 function resetGame() {
     init();
@@ -234,6 +256,7 @@ function resetGame() {
     location.reload();
 }
 
+//init
 function init() {
     board = [
         [null, null, null, null],//row0
