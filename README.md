@@ -26,8 +26,4 @@ In this game, I just used HTML5, CSS3 and JavaScript.
 * [Let's play Mastermind](https://yasamanloghmani.github.io/mastermind-game/)
 
  # Next Steps: 
-<<<<<<< HEAD
  This game is designed for one player and the computer, my next step will be 2 players and the computer ,so computer will generate a same code for 2 players. Players will be playing in 2 different boards, one by one on their own board. Winner player will be the person who guesses desiered code first. The game will be connected to a database to save scores and information of each players.
-=======
- This game is designed for one player and the computer, my next step will be 2 players and the computer ,so computer will generate a same code for 2 players. Players will be playing in 2 different boards, one by one on their own board. Winner player will be the person who guesses desiered code first. The game will be connected to a database to save scores and information of each players.
->>>>>>> master
